@@ -1,22 +1,4 @@
 # %%
-
-import pandas as pd
-
-df_2017_faturamento = pd.read_csv('C:\\Users\\rick_\\OneDrive\\Desktop\\desbravando-pandas-main\\data\\_faturamento.csv', sep=';')
-df_2017_faturamento
-
-
-# %%
-df_2017_faturamento.shape
-# %%
-df_2017_faturamento.info(memory_usage='deep')
-
-# %%
-
-df_2017_faturamento['Quantia'].describe('mean')
-# %%
-df_2017_faturamento.max()
-# %%
 import pandas as pd
 
 # Carregar o DataFrame
@@ -65,16 +47,25 @@ df_2017_faturamento
 
 
 # %%
+df_2017_faturamento[['Noites','Quantia']]
 
-# Selecionar a linha onde 'Quantia' é máxima
+df = df_2017_faturamento.sort_values(by = 'Quantia', ascending=False, inplace=True)
 
-condicao = df_2017_faturamento['Quantia'] == df_2017_faturamento['Quantia'].max()
-df_maior = df_2017_faturamento[condicao]
-df_maior['Hóspede'].iloc[0]
 
-           
+df_2017_faturamento
 # %%
+
+df_2017_faturamento.sort_values (by = 'Quantia', 
+                                ascending=False, inplace=True)
 
 df_2017_faturamento[['Noites','Quantia']]
-# %%
+df_2017_faturamento
 
+
+df_2017_faturamento['Ratio'] = df_2017_faturamento['Quantia'] / df_2017_faturamento['Noites']
+df_2017_faturamento
+# %%
+df_2017_faturamento[['Noites','Quantia']]
+# %%
+df_2017_faturamento['Ratio'] = df_2017_faturamento['Quantia'] / df_2017_faturamento['Noites']
+df_2017_faturamento[['Noites','Quantia','Ratio']]
